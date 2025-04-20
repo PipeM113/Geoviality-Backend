@@ -1,0 +1,12 @@
+requests
+python-dotenv
+pymongo
+ultralytics==8.2.79
+opencv-python
+torch==2.3.1
+pandas
+pyngrok
+pika
+pydantic
+fastapi
+pytz

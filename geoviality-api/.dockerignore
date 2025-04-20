@@ -1,0 +1,22 @@
+# Archivos varios
+README.md
+
+# Archivos de configuracion
+.vscode
+.gitignore
+.gitattributes
+.editorconfig
+
+# Cache de python
+__pycache__
+
+# Carpeta de imagenes
+services
+imgs
+
+# Archivos png y jpg
+*.png
+*.jpg
+
+# Virtual environment
+.venv

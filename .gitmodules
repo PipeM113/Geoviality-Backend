@@ -1,0 +1,6 @@
+[submodule "geoviality-api"]
+	path = geoviality-api
+	url = https://github.com/GroundTechChile/geoviality-api.git
+[submodule "geoviality-ia"]
+	path = geoviality-ia
+	url = https://github.com/GroundTechChile/geoviality-ia

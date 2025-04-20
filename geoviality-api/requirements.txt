@@ -1,0 +1,13 @@
+fastapi
+python-multipart == 0.0.5
+pydantic
+uvicorn
+pymongo
+python-dotenv
+pyngrok
+pika
+passlib[bcrypt]
+bcrypt==4.0.1
+python-jose
+pytz
+websockets

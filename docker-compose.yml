@@ -1,0 +1,40 @@
+services:
+  rabbitmq:
+    image: rabbitmq:3-management
+    container_name: rabbitmq
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    environment:
+      RABBITMQ_DEFAULT_USER: guest
+      RABBITMQ_DEFAULT_PASS: guest
+      TZ: America/Santiago
+  api:
+    build:
+      context: ./geoviality-api
+    container_name: api-container
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./geoviality-api:/app
+    environment:
+      TZ: America/Santiago
+    env_file:
+      - ./geoviality-api/.env
+    depends_on:
+      - rabbitmq
+    command: ["python", "app/main.py"]
+  ia:
+    build:
+      context: ./geoviality-ia
+    container_name: ia-container
+    volumes:
+      - ./geoviality-ia:/app
+    environment:
+      TZ: America/Santiago
+    env_file:
+      - ./geoviality-ia/.env
+    depends_on:
+      - rabbitmq
+      - api
+    command: ["python", "main.py"]
