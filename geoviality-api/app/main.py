@@ -7,8 +7,8 @@ from fastapi.middleware.cors import CORSMiddleware
 
 load_dotenv()
 
-from controllers import create_directories
-from routes import router as api_router
+from controllers.v1 import create_directories
+from routes.v1 import auth_router, users_router, files_router, sidewalks_router, historical_router, events_router, notify_router
 
 # Si USE_NGROK es "True" o no se especifica en .env, se usará NGROK (default)
 useNgrok = os.getenv("USE_NGROK", "True").lower()
@@ -20,20 +20,29 @@ create_directories()
 
 app = FastAPI()
 
-app.include_router(api_router)
+# Incluir routers
+app.include_router(auth_router)
+app.include_router(users_router)
+app.include_router(files_router)
+app.include_router(sidewalks_router)
+app.include_router(historical_router)
+app.include_router(events_router)
+app.include_router(notify_router)
 
-#REVISAR DESPUES, MUY WEBIAO INSEGURO
-origins = ["*"]
+allowed_origins_env = os.getenv("ALLOWED_ORIGINS", "")
+allowed_origins = [
+    origin.strip() for origin in allowed_origins_env.split(",") if origin.strip()
+] if allowed_origins_env else ["*"]
+allow_credentials = "*" not in allowed_origins
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=origins,
-    allow_credentials=True,
-    allow_methods=["*"],
-    allow_headers=["*"],
+    allow_origins=allowed_origins,
+    allow_credentials=allow_credentials,
+    allow_methods=["GET", "POST", "PUT", "PATCH", "DELETE"],
+    allow_headers=["Authorization", "Content-Type"],
 )
-#CORS WEA MALA
-
+#...existing code...
 app_host = os.getenv("HOST", "127.0.0.1")
 app_port = int(os.getenv("PORT_NUMBER", "8080"))
 ngrok_domain = os.getenv("NGROK_DOMAIN")
