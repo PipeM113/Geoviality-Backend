@@ -39,3 +39,10 @@ run: build up
 
 venv:
 	python3 -m venv .venv && . ./.venv/bin/activate && pip install -r ./geoviality-api/requirements.txt && pip install -r ./geoviality-ia/requirements.txt
+
+rabbitmq:
+	docker-compose up -d rabbitmq 
+
+# Ejecutar mongo y rabbitmq
+services: rabbitmq
+	docker-compose up -d mongo rabbitmq

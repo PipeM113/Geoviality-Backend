@@ -124,3 +124,11 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+quality/old_app/controllers.py
+quality/old_app/database.py
+quality/old_app/main.py
+quality/old_app/models.py
+quality/old_app/move_images.py
+quality/old_app/routes.py
+quality/old_app/schemas.py
+quality/old_app/wsTest.py

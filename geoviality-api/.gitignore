@@ -144,3 +144,9 @@ dist
 .yarn/install-state.gz
 .pnp.*
 prueba.py
+
+.quality
+
+#carpeta quality y quality/old_app
+quality/
+quality/old_app/

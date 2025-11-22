@@ -3,7 +3,7 @@ python-dotenv
 pymongo
 ultralytics==8.2.79
 opencv-python
-torch==2.3.1
+torch==2.6.0
 pandas
 pyngrok
 pika

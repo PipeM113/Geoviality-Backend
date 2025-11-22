@@ -16,6 +16,8 @@ confianza = 0.65
 path_post = os.getcwd() + '/imgs/post/'
 path_csv = os.getcwd() + '/imgs/'
 
+rabbitmq_host = os.getenv("RABBITMQ_HOST", "localhost")
+rabbitmq_port = int(os.getenv("RABBITMQ_PORT", "5601"))
 
 def callback(ch, method, properties, body):
     print("    - [IA] Imagen recibida")
@@ -44,7 +46,7 @@ def procesar_imagenes():
     print("    - [IA] Iniciando conexión a cola RabbitMQ...")
     while True:
         try:
-            connection = pika.BlockingConnection(pika.ConnectionParameters('rabbitmq'))
+            connection = pika.BlockingConnection(pika.ConnectionParameters(host=rabbitmq_host, port=rabbitmq_port))
             print("    - [IA] Conexion a cola Rabbit exitosa.")
             break
         except pika.exceptions.AMQPConnectionError:
