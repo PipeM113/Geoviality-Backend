@@ -15,14 +15,21 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 
-# Copiar el archivo de requerimientos y la aplicación
+# Copiar el archivo de requerimientos
 COPY requirements.txt .
 
 # Instalar las dependencias de Python
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Copiar el resto de la aplicación
+# Copiar el resto de la aplicación (incluye ia_service/, .env, modelos, etc.)
 COPY . .
 
-# Comando para ejecutar la aplicación
-CMD ["python", "main.py"]
+# (Opcional pero útil) no bufferizar stdout/stderr
+ENV PYTHONUNBUFFERED=1
+
+# Comando para ejecutar la aplicación (nuevo entrypoint)
+# Opción 1: como módulo
+CMD ["python", "-m", "ia_service.app"]
+
+# Si prefieres ruta directa de archivo, sería:
+# CMD ["python", "ia_service/app.py"]

@@ -132,3 +132,13 @@ quality/old_app/move_images.py
 quality/old_app/routes.py
 quality/old_app/schemas.py
 quality/old_app/wsTest.py
+quality/old_ia/database.py
+quality/old_ia/detector_ia.py
+quality/old_ia/Dockerfile
+quality/old_ia/Dockerfile:Zone.Identifier
+quality/old_ia/funcs.py
+quality/old_ia/ia_predictor.py
+quality/old_ia/main.py
+quality/old_ia/models.py
+quality/old_ia/requirements.txt
+quality/old_ia/requirements.txt:Zone.Identifier

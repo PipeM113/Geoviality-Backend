@@ -1,6 +1,11 @@
+"""Cliente MongoDB y handle global 'db' para la API."""
+
+# stdlib
+import os
+
+# third-party
 from pymongo.mongo_client import MongoClient
 from dotenv import load_dotenv
-import os
 
 load_dotenv()
 
@@ -11,7 +16,8 @@ client = MongoClient(uri)
 try:
     client.admin.command("ping")
     print("You successfully connected to GeoViality database")
-except Exception as e:
-    print(e)
+except Exception as exc:  # pylint: disable=broad-exception-caught
+    # Se mantiene el catch amplio por robustez en arranque
+    print(exc)
 
 db = client[database]
