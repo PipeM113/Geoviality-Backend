@@ -142,3 +142,6 @@ quality/old_ia/main.py
 quality/old_ia/models.py
 quality/old_ia/requirements.txt
 quality/old_ia/requirements.txt:Zone.Identifier
+.sonar/.sonar_lock
+.sonar/report-task.txt
+sonar/sonar-project.properties

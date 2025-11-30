@@ -13,8 +13,8 @@ COPY requirements.txt /code/requirements.txt
 # Instalar las dependencias listadas en requirements.txt
 RUN pip install --no-cache-dir --upgrade -r /code/requirements.txt
 
-# Copiar todo el contenido del directorio actual en el host al directorio de trabajo en el contenedor
-COPY . /code
+# Copiar el contenido de la aplicación al directorio de trabajo en el contenedor
+COPY /app /code
 
 # Exponer el puerto 8080 para que la aplicación sea accesible desde el host
 EXPOSE 8080

@@ -22,7 +22,7 @@ COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
 # Copiar el resto de la aplicación (incluye ia_service/, .env, modelos, etc.)
-COPY . .
+COPY /ia_service /app
 
 # (Opcional pero útil) no bufferizar stdout/stderr
 ENV PYTHONUNBUFFERED=1
@@ -30,6 +30,7 @@ ENV PYTHONUNBUFFERED=1
 # Comando para ejecutar la aplicación (nuevo entrypoint)
 # Opción 1: como módulo
 CMD ["python", "-m", "ia_service.app"]
+
 
 # Si prefieres ruta directa de archivo, sería:
 # CMD ["python", "ia_service/app.py"]
